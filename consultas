@@ -1,0 +1,45 @@
+# faz um post no indice funcionarios, o put faz a mesma coisa ate onde eu vi
+# se nao passar o id tipo "_doc/10" ele cria um automatico
+POST /funcionarios/_doc
+{
+  "nome": "Rodrigo",
+  "idade": "32"
+}
+
+# Busca um item no indice com o id = 1
+GET /funcionarios/_doc/1
+
+# Busca todos os caras que estao no indice xpto
+GET /funcionarios/_search
+
+# Deleta um item no indice com id = 2
+DELETE /funcionarios/_doc/2
+
+# Faz uma insercao em massa, lembrando que se nao passar o id ele gera um
+POST /funcionarios/_bulk
+{"index":{}}
+{"nome": "Fulano di tal", "idate": "10"}
+{"index":{}}
+{"nome": "Fulano di tal", "idate": "11"}
+{"index":{}}
+{"nome": "Fulano di tal", "idate": "12"}
+{"index":{}}
+{"nome": "Fulano di tal", "idate": "13"}
+{"index":{}}
+{"nome": "Fulano di tal", "idate": "14"}
+
+# faz uma busca em massa no indice xpto com os ids yxl
+GET /funcionarios/_mget
+{
+  "docs": 
+  [
+    {
+    "_index": "funcionarios",
+    "_id": "1"
+    },
+    {
+      "_index": "funcionarios",
+      "_id": "2"
+    }
+  ]
+}
